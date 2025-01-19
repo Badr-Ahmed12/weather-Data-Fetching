@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Weather App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Additional styles for dynamic backgrounds */
+    .sunny { background: linear-gradient(to bottom, #FFD700, #FFA500); }
+    .cloudy { background: linear-gradient(to bottom, #B0C4DE, #778899); }
+    .rainy { background: linear-gradient(to bottom, #87CEFA, #4682B4); }
+    .default { background: linear-gradient(to bottom, #4B79A1, #283E51); }
+  </style>
+</head>
+<body class="default min-h-screen flex items-center justify-center text-white transition-colors duration-500">
+  <div class="w-full max-w-3xl p-6 bg-opacity-10 rounded-lg shadow-lg backdrop-blur">
+    <h1 class="text-3xl font-bold text-center mb-6">🌦️ Advanced Weather App</h1>
+
+    <!-- Search Form -->
+    <form id="weatherForm" class="flex gap-2 mb-4">
+      <input
+        id="cityInput"
+        type="text"
+        placeholder="Enter city name..."
+        class="w-full p-3 rounded-lg bg-gray-100 text-gray-800 focus:ring-2 focus:ring-blue-500"
+        required
+      />
+      <button
+        type="submit"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg"
+      >
+        Search
+      </button>
+    </form>
+
+    <!-- Units Toggle -->
+    <div class="flex justify-end mb-6">
+      <button
+        id="unitToggle"
+        class="bg-gray-800 px-3 py-1 rounded-full hover:bg-gray-700 transition"
+      >
+        Switch to °F
+      </button>
+    </div>
+
+    <!-- Weather Details -->
+    <div id="weatherResult" class="hidden text-center">
+      <h2 id="location" class="text-2xl font-bold"></h2>
+      <p id="weatherCondition" class="text-lg mt-2"></p>
+      <p id="temperature" class="text-5xl font-bold mt-4"></p>
+      <div class="flex justify-center gap-6 mt-4">
+        <div>
+          <p class="font-semibold">Feels Like:</p>
+          <p id="feelsLike"></p>
+        </div>
+        <div>
+          <p class="font-semibold">Humidity:</p>
+          <p id="humidity"></p>
+        </div>
+        <div>
+          <p class="font-semibold">Wind:</p>
+          <p id="windSpeed"></p>
+        </div>
+      </div>
+      <button
+        id="favoriteButton"
+        class="mt-6 bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg"
+      >
+        Add to Favorites
+      </button>
+    </div>
+
+    <!-- Error Message -->
+    <p id="errorMessage" class="text-center text-red-500 hidden">City not found. Please try again!</p>
+
+    <!-- Favorites Section -->
+    <div id="favoritesSection" class="mt-10">
+      <h3 class="text-xl font-semibold mb-2">⭐ Favorite Cities:</h3>
+      <ul id="favoritesList" class="list-disc list-inside"></ul>
+    </div>
+
+    <!-- Search History -->
+    <div id="historySection" class="mt-10">
+      <h3 class="text-xl font-semibold mb-2">🔍 Recent Searches:</h3>
+      <ul id="historyList" class="list-disc list-inside"></ul>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
